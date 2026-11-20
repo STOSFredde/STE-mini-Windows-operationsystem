@@ -1,0 +1,338 @@
+STEAMP V.2.18 - SKRIVBORD MED MOD-SPELARE, FILEEXPLORER, NOTEPAD, CALCULATOR, PICTURES, MINESWEEPER
+FOR ATARI STE (lag upplosning, Windows 95-stil)
+=========================================================================================
+Kraver: CLVIDEO V1.00 (plats X, for Paint), CLFILE V1.35 eller senare (plats K), CLMOD V1.30 eller senare (plats O), Misty (M),
+        STE_EXTN (F). STE eller Mega STE (DMA-ljud).
+Filer:  STEAMP.BAS, PIXUF7.FNT, STOS8.FNT, CLICKS.SPL och CLICKD.SPL i samma mapp
+        (eller C:\CLAUDE\STEAMP\). Utan SPL-filerna blir det inget klickljud (inget fel).
+        STEAMP.INF skapas i samma mapp nar man avslutar (Start -> Shut down, Esc eller Q + Yes). Den innehaller:
+        bada fonstrens mappar, volym, bas, diskant, kHz, spelarens plats, Loop, och SENASTE LATEN
+        (mapp, filnamn och position). Vid start star markoren pa den laten och Play (X) fortsatter
+        dar den var. Ett vanligt textfil-format, falten avgransas med |.
+
+SKRIVBORDET (V2.00)
+  STEAMP startar pa ett turkost skrivbord med sex ikoner till vanster:
+    STE Amp      = spelaren          File explorer = filfonstren (Browse + Favourites)
+    Minesweeper  = spelet            Notepad    = texteditorn (nytt dokument / visa den minimerade)
+    Calculator   = miniraknaren      Pictures   = bildvisaren (filvaljaren, valj PE1/NEO/PI1/MBK)
+  Klick = markera ikonen (bla namnruta), dubbelklick eller Return = starta.
+  Spelaren, Minesweeper och Calculator ar fonster ovanpa skrivbordet (eller Explorer). (V2.01)
+  Klick i ett fonster lagger det overst (som i Windows); det som oppnas hamnar overst. Ett
+  fonster som delvis ligger under ett annat ritar inte sin animation (VU, position, klocka)
+  forran det kommer fram igen.
+  V2.02: File explorer ar ocksa ett fonster i ordningen - klick i den lagger den overst (den
+  tacker da de andra). Hogst 4 fonster oppna samtidigt (oppna eller minimerade: File explorer,
+  Notepad, Minesweeper, Calculator, STE Amp) - det femte far rutan "Max 4 windows".
+  Aktivitetsfaltet: Start, sedan en knapp per oppet fonster (lika breda, smalare ju fler).
+  Knappen ar nedtryckt for fonstret som ligger overst. Klick: minimerat = visa, bakom = fram,
+  overst = minimera. Langst till hoger den minimerade spelaren (LCD, knappar).
+  Meddelanderaden syns i den del av faltet som ar ledig.
+  Klockan (V2.03) langst till hoger i aktivitetsfaltet (TIME$, timmar:minuter, kollas en gang i
+  sekunden). Klick pa klockan = Date/Time.
+
+DATE/TIME (V2.03) - klick pa klockan
+  Kalender till vanster: < > = manad, < > under = ar, klick pa en dag = valj den (bla).
+  Till hoger tiden som tickar: Hour - +, Minute - +, "0" = sekunderna till 00.
+  Under: veckodag och datum. OK (eller Return) = satt DATE$ ("DD/MM/YYYY") och TIME$
+  ("HH:MM:SS") i STOS/TOS, Cancel / x / Esc = andra inget. Musiken fortsatter.
+  STE:n har ingen batteriklocka, sa tiden maste stallas efter varje start.
+  Esc / Q pa skrivbordet = avsluta (fragar forst). Z X C V B, + -, L, K, F3 fungerar overallt
+  utom i Notepad och Pictures.
+
+FILE EXPLORER (fonstret, hette Explorer fore V2.02)
+  Oppnas med ikonen, Start -> Explorer eller klick pa den i aktivitetsfaltet. Det tacker
+  skarmen ovanfor aktivitetsfaltet. Titelraden: _ = minimera (knapp i aktivitetsfaltet),
+  x = stang (skrivbordet syns). Mapparna och markorerna ligger kvar tills man oppnar igen.
+  Dubbelklick (eller Return) pa en fil: MOD = spela, TXT ASC DOC INF INI LST LOG ME = Notepad,
+  PE1 NEO PI1 MBK = Pictures. Allt annat som forut.
+  Vanster fonster "Browse": bladdra bland mappar med MOD-filer.
+  Hoger fonster "Favourites": din favoritmapp. Det aktiva fonstret har bla titelrad.
+    C:       enhetsknappen: klick = lista med enheterna, klicka pa en.
+    pil upp  upp en mapp (eller Backspace).
+    Name / Type / Size: klick = sortera, igen = vand. Mappar alltid forst.
+    listan   klick = markor, dubbelklick (eller Return) = oppna mappen / SPELA MOD-filen.
+             Hoger musknapp (eller Space) = markera / avmarkera (ljusbla rad).
+             Laten som spelas visas med rod text.
+  Aktivitetsfaltet langst ner: Start-knappen (Windows-flaggan) och meddelanderaden.
+    Start-menyn:  STE Amp        = visa spelaren
+                  Explorer       = visa Explorer (och minimera spelaren, filerna fram)
+                  Minesweeper    = spela Minesweeper i ett fonster medan musiken gar
+                  Notepad        = texteditorn med ett nytt dokument
+                  Pictures       = valj en bild och visa den
+                  Click sound    = klickljudet av/pa (on/off syns i menyn, samma som K)
+                  Save settings  = spara STEAMP.INF nu
+                  Shut down...   = avsluta (fragar forst)
+    Raden under musen blir bla. Klick utanfor menyn eller Esc = stang den.
+  Knapparna ovanfor aktivitetsfaltet: Copy (F5), Move (F6), Rename (F2), Delete (F8), New dir (F7), Size (F9),
+  Refresh (F10), Player (F3 = visa/gom spelaren, musiken fortsatter).
+  Dra filer mellan fonstren som i FEXPLORE: fragan Copy / Move / Cancel (Shift = Move forvalt).
+  Tab = byt fonster, Ctrl+A = markera alla, Esc / Q = avsluta.
+
+NOTEPAD (V2.00) - enkel texteditor, eget fonster over hela skarmen ovanfor aktivitetsfaltet
+  Oppnas med ikonen / Start -> Notepad (nytt dokument) eller dubbelklick pa en textfil i
+  Explorer. Musiken fortsatter (aven nasta lat); spelaren minimeras sa lange och kommer
+  tillbaka nar Notepad stangs. Minesweeper doljs sa lange.
+  Titelraden: ||| = 8x8-text (V2.08): nedtryckt = STOS8-fonten, alla tecken 8 punkter breda sa
+  att kolumner och tabeller linjerar (37 tecken syns, langre rader rullar i sidled);
+  igen = den lilla proportionella texten (PIXUF7).
+  Titelraden: _ = minimera (V2.01): Notepad blir en knapp i aktivitetsfaltet med texten kvar,
+  klick pa den (eller Notepad-ikonen / Start -> Notepad) = tillbaka dar du var. Dubbelklick pa
+  en annan textfil i Explorer under tiden fragar forst om andringarna ska sparas.
+  Knappar: New, Open (filvaljaren, *.TXT *.ASC *.DOC *.INF *.ME - hoger musknapp i filvaljaren
+  = visa alla filer), Save, Save as (filvaljaren i sparlage, utan typ blir det .TXT),
+  Line (V2.02, aven Ctrl+G): skriv radnumret, Return = ga dit.
+  Find (V2.01, aven Ctrl+F): skriv texten, Return. Soker fran markoren framat och borjar om
+  fran borjan; hittar som skrivet, VERSALER eller gemener. Ordet markeras (inverterat) och
+  markoren hamnar efter det. F3 = sok nasta.
+  Overst till hoger: rad/antal rader och kolumn. "*" i titelraden = andrat och inte sparat.
+  Tangenter: tecken skrivs vid markoren, Backspace / Delete (forst/sist pa raden = slar ihop
+  raderna), Return = delar raden, Tab = blanksteg till nasta 4-kolumn, pilar, Ctrl+upp/ner =
+  en sida, Home = radens borjan (Ctrl+Home = slutet), Ctrl+S = spara, Ctrl+O = oppna,
+  Help = visa tangenterna, Esc eller x = stang. Andrat: Yes / No / Cancel (spara forst?).
+  Mus: klick i texten = markoren dit.
+  MARKERA OCH URKLIPP (V2.05):
+    Dra med vanster musknapp = markera (inverterat). Drar man ovanfor/under texten rullar den.
+    Shift+klick = markera fran markoren dit. Shift+pilar och Shift+Home = markera med tangenterna.
+    Hoger musknapp = meny: Cut, Copy, Paste, Delete, Select all (graa nar de inte gar).
+    Tangenter: Ctrl+X = klipp ut, Ctrl+C = kopiera, Ctrl+V = klistra in, Ctrl+A = markera allt.
+    Backspace/Delete tar bort det markerade, ett tecken eller Return ersatter det.
+    Find markerar ordet den hittar (sa Ctrl+C kopierar det direkt).
+    Urklippet ligger i bank 3 (gors forsta gangen) och finns kvar nar man oppnar en annan fil,
+    sa man kan kopiera mellan filer. Hogst 1500 rader; en rad som blir langre an 126 tecken
+    nar man klistrar in eller tar bort stoppas med ett meddelande.
+    Sidbyte ar nu Ctrl+upp/ner och radslut Ctrl+Home (Shift anvands till att markera).
+  Rullistorna (V2.02) syns bara nar de behovs: musen vid hogra kanten (x 318-319, V2.06) = rullisten
+  for raderna, musen langst ner (y 198-199, V2.06) = rullisten i sidled over nedersta raden.
+  De forsvinner nar musen gar darifran. Pilar = en rad / 8 tecken, bredvid handtaget = en sida /
+  32 tecken.
+  Langa rader rullas i sidled nar markoren gar utanfor.
+  Granser: hogst 64000 byte och 1500 rader, hogst 126 tecken per rad - langre rader delas nar
+  filen lases (och sparas sa). Radslut CR LF (LF ensamt gar ocksa att lasa, sparas som CR LF).
+  Fonten PIXUF7 saknar & @ ` och tab - de finns kvar i texten men syns inte.
+  Hur: varje rad ligger i en egen ruta pa 128 byte i bank 4 (slutar med 0) och ritas med TEXT
+  DRAW direkt ur banken. Filen lases tva ganger till bank 12 (andra gangen fran byte 1) sa att
+  KOPY alltid far jamna adresser. Return/radbyte flyttar raderna under med KOPY via bank 12.
+  Spara: rader som borjar pa jamn plats i filen kopieras med KOPY, udda byte for byte.
+
+PAINT (V2.07) - enkelt ritprogram, Start -> Paint (kraver CLVIDEO, plats X)
+  Skarmen: bilden (rad 0-159) med bildens egen palett, under den bildens 16 farger (rad 160-169),
+  sedan verktygen och aktivitetsfaltet i STEAMP:s farger. Paletten byts pa rad 170 med CLVIDEO
+  (SPLIT RESPAL bildens palett, STEAMP:s palett + SPLIT RES 170,0,0), sa menyn syns alltid.
+  Fargerna: vanster klick = farg 1 (svart streck under), hoger klick = farg 2 (vitt streck).
+  Vanster musknapp ritar med farg 1, hoger med farg 2 (som i MS Paint).
+  Verktyg (aven tangent 1-0): penna, pensel (2 punkter), linje, ram, fylld ruta, ellips, fylld
+  ellips, fyll (GFX FLOOD), sudd (7x7 med farg 2), pipett (hamtar en farg ur bilden).
+  Linje/ram/ellips: dra fran horn till horn (formen visas medan man drar).
+  Muspekaren doljs medan man haller nere knappen och ritar (V2.09), och kommer tillbaka nar man slapper.
+  Undo (knappen, Undo-tangenten eller Ctrl+Z): angrar senaste; ett tryck till gor om.
+  New, Open (NEO, PI1, PE1 320x200 16 farger), Save (Ctrl+S, typen fran namnet: .NEO, .PI1
+  eller .PE1), As = Save as (utan typ blir det .NEO), Full eller Space = hela bilden 320x200 med
+  bildens palett (ritar man dar ar hela skarmen bild), Space igen = tillbaka. x / Esc = stang
+  (fragar om andringarna ska sparas). Bilden ligger kvar till nasta gang Paint oppnas.
+  Ny bild: vit med en standardpalett (vit, svart, rod, gron, bla, gul, turkos, lila, gra ...).
+  Minne: bank 2 = bilden (32192 byte: NEO-huvud, bilden, STEAMP:s palett), bank 1 = angra.
+  Dialoger och filvaljaren: delningen stangs av medan de syns.
+
+CALCULATOR (V2.01) - miniraknare som i Windows 95
+  Ikonen / Start -> Calculator. Ett fonster (dra i titelraden), _ = minimera (knappen "Calc"
+  i aktivitetsfaltet, talen ligger kvar), x = stang.
+  Knappar: C (nollstall), < (sudda sista siffran), %, /, *, -, +, =, +- (byt tecken), . och 0-9.
+  Raknar i tur och ordning som Windows-raknaren (12 + 3 * 4 = 60). Upp till 12 siffror in,
+  svaret med hogst 6 decimaler. "Div by 0" och "Overflow" (over 999 999 999) vid fel.
+  Tangenter nar Calculator ligger overst: 0-9 . , + - * / % Return (=), Backspace (<), Esc (C).
+  (C, Z, X ... ar fortfarande spelarens tangenter.) Talen ar STOS flyttal (CA#, CD#).
+
+PICTURES (V2.00) - bildvisare i helskarm
+  Ikonen / Start -> Pictures oppnar filvaljaren (*.PE1 *.NEO *.PI1 *.MBK), eller dubbelklick pa en
+  bild i Explorer. PE1 (FastPaint / STE PAINT, se PAINT\FORMAT.TXT) kan vara storre an skarmen:
+  den visas med STE:s hardvaruscroll (skarmadress $FF8201/03/0D, LINEWID $FF820F, HSCROLL
+  $FF8265) som VISA.BAS. Bilder mindre an 320 x 200 laggs mitt pa en svart yta (bank 5).
+  Bildens egen palett anvands, STEAMP:s palett kommer tillbaka efterat.
+  Dra med musen = flytta bilden, pilar = 8 punkter (Shift = 64). Klick (utan att dra), hoger
+  musknapp, Esc, Return, Space eller Q = tillbaka. Musiken fortsatter.
+  Bara 16-fargsbilder (4 bitplan). PE1/BIT med 1-3 bitplan visas inte (VIEW.BIN behovs da).
+
+SPELAREN (popup-fonstret, som WinAmp)
+  Oppnas nar man dubbelklickar en MOD-fil (typ .MOD eller namnet MOD.*).
+  Dra i den bla titelraden = flytta fonstret.  x = stang spelaren (musiken stoppas).
+  _ = minimera (aven F3 / Player): musiken fortsatter och ett litet minimerat fonster syns nere
+  till hoger med STEAMP, lage och position (t.ex. "STEAMP Play 12/41"), en aterstall-knapp och x.
+  Klick pa fonstret eller aterstall (eller F3) = visa spelaren. x = stoppa musiken och stang.
+  LCD-rutan: latens namn (rullar om det ar langt), position (03/24), kHz och Play/Pause/Stop,
+  och fyra VU-staplar (en per kanal).
+  Listen under LCD:n: var i laten man ar. Klick i listen = hoppa dit.
+  Knapparna:  |<  foregaende MOD i mappen     >   spela        ||  paus (igen = fortsatt)
+              []  stopp                       >|  nasta MOD i mappen
+              25k kvalitet: 12,5 -> 25 -> 50 -> 12,5 kHz. Spelar laten startas den om pa samma
+                  position (tar 2-4 sekunder, spelaren bygger om mixern).
+              Loop: laten upprepas i stallet for att nasta MOD spelas (knappen stannar
+                  intryckt, "Loop" syns i LCD:n). Tangent L. Sparas i STEAMP.INF.
+              Save: kopierar laten som spelas till favoritfonstrets mapp (direkt fran minnet).
+  Reglagen:   Vol (0-64), Bass och Treb (-12 till +12 dB, mitten = rakt). Dra eller klicka.
+  Kanaler:    klick pa en VU-stapel (eller 1-4) = kanalen av/pa. Avstangd kanal = gra stapel.
+              Galler aven nasta lat (SONG CHANNELS gors efter varje start).
+  Tangenter:  Z X C V B = foregaende / spela / paus / stopp / nasta,  + - = volym.
+  Nar laten tar slut (borjar om fran borjan) spelas nasta MOD i mappen automatiskt, och efter
+  den sista kommer den forsta igen. "Mappen" ar den dar du dubbelklickade - listan kommer man
+  ihag aven om du bladdrar vidare i fonstret.
+
+KLICKLJUD (V1.07) - varje musklick ger ett "klick-klack", K = av/pa (sparas i STEAMP.INF)
+  Musik spelar (aven pausad): klicket ar inlagt som instrument i en ledig instrumentplats i
+  modulen (hogsta tomma, SONG PUT SAMPLE nar laten laddas) och spelas med SFX PLAY pa kanal 2
+  (hoger) och 3 (vanster), sa det hors i mitten. Kanalerna tystnar ca 0,17 s under klicket.
+  Ingen musik: samma klick genom DAC:en (DAC RAW, 25 kHz), forberett med halva nivan sa att det
+  later ungefar lika hogt som genom modulspelaren.
+  CLICKS.SPL = 16574 Hz (ton C-3), signerat 8 bitar, full niva.  CLICKD.SPL = 25033 Hz, halv niva.
+  Gamla moduler med 15 instrument eller utan ledig plats: inget klick medan de spelar.
+  Save kopierar nu filen fran disken (modulen i minnet har ju klicket inlagt).
+
+MINESWEEPER (Start -> Minesweeper)
+  Som i Windows 95, nyborjarnivan: 9 x 9 rutor och 10 minor. Forsta klicket ar aldrig en mina.
+  Vanster klick = oppna rutan (tomma omraden oppnas av sig sjalva), hoger klick = flagga.
+  Rod raknare till vanster = minor kvar, till hoger = sekunder. Ansiktet = nytt spel
+  (ledset vid small, solglasogon nar du vinner). Dra i titelraden = flytta, x = stang.
+  _ = minimera: ett litet "Mines"-fonster i aktivitetsfaltet (till vanster om spelarens).
+  Spelet ligger kvar och klockan gar vidare. Klick pa det (eller Start -> Minesweeper) = visa.
+  Spelaren ligger alltid overst om fonstren overlappar - "Explorer" i Start-menyn minimerar den.
+  Ikonen Minesweeper pa skrivbordet = samma som Start -> Minesweeper.
+
+MINNE
+  Bank 10 och 11 = fonstrens kataloger (400 filer var), 12 = kopieringsbuffert (256 KB),
+  13 = fonterna, 14 = kataloger nar mappar kopieras/raknas/tas bort, 7 = spellistan,
+  4 = Notepads text (192000 byte, gors forsta gangen Notepad oppnas), 8 = bilden i Pictures,
+  5 = bilden pa svart yta (sma bilder) - 8 och 5 tas bort nar bilden stangs,
+  15 = MOD-filen (sa stor som filen), 9 = spelarens arbetsminne (=SONG NEED: filen + 277-415 KB).
+  Bank 15 och 9 gors om for varje lat (SONG STOP forst). Storsta modulen som ryms pa en STE med
+  4 MB ar ungefar 1,3 MB (7THEAVEN 892 KB gar bra).
+
+PROVAT V2.00 (2026-11-19), i tolken med steamp_sim.py (nu aven HUNT, FILE BROWSE$, FILE PATH$
+  och skarmadressen via $FF8201/03/0D): skrivbordet, markera/dubbelklicka ikonerna, Minesweeper
+  fran ikonen, Notepad: skriva, Return, pilar, Backspace, Save as (filen blev ratt), Esc med
+  fragan Yes/No/Cancel; Open NOTES.TXT (48 rader, lang rad delad), bladdra, klick i texten,
+  rullisten, sidledsrullning; dela rad pa udda och jamn kolumn, sla ihop med Backspace och
+  Delete, Tab, Save as -> filen byte for byte som vantat (2424 byte). Explorer: oppna, stang,
+  minimera, aterstall fran aktivitetsfaltet, dubbelklick pa TXT -> Notepad, PE1 -> Pictures.
+  Pictures: 480 x 300 PE1 (hardvaruscroll, pilar, dra), 160 x 100 PE1 (mitt pa svart),
+  NEO via Start -> Pictures; paletten tillbaka efterat. Musik under Notepad och Pictures med
+  automatiskt nasta lat (ritar inte i Explorer bakom).
+  INTE provat: riktig STOS/Hatari, MBK-bilder (LOAD), riktig filvaljare, kompilerat.
+
+PROVAT V1.xx (2026-11-19)
+  I STE-testmiljons STOS-tolk (VERKTYG\STE-TESTMILJO\stos.py) med attrapper for CLFILE (samma
+  textmodell som CLFILE-testerna), CLMOD, Misty och STE_EXTN (VERKTYG\STE-TESTMILJO\steamp_sim.py):
+  bladdra, dubbelklick pa MOD = spela, paus, spela, kHz-byte (startar om pa samma position),
+  nasta/foregaende, automatiskt nasta nar laten borjar om, Save till favoriterna, basreglaget,
+  volym med + -, klick i positionslisten, flytta spelaren, stang den, F3 gom/visa, dra en fil
+  mellan fonstren (Copy), Rename, Delete av mapp, avsluta (STEAMP.INF sparas och lases in igen).
+  ASC -> BAS -> ASC med stosbas.py: samma program och alla variabelnamn hela.
+  INTE provat: riktig STOS/Hatari, riktigt ljud, bas/diskant pa riktigt, kompilerat.
+
+VERSIONER
+  2.18 (2026-11-20) Pekaren lamnade en kopia vid klick pa en ikon: skarmen kopierades till BACK innan
+       pekaren hunnit forsvinna. Huvudslingan vantar nu en VBL efter HIDE ON (klick och tangenter).
+  2.17 (2026-11-20) Larm: en anteckning som borjar med en tid (HH:MM, t.ex. "14:20 Mote") fragar efter
+       Note hur manga minuter fore larmet ska ga (15 = forslag, tomt/Cancel = inget larm). Larmet: tre
+       pip (BELL) och en ruta "Alarm: ..." med OK. Kollas varje minut pa skrivbordet (inte medan
+       Paint/Notepad/Pictures ar oppna - da kommer det nar man gatt tillbaka, om motet inte har
+       borjat). I STEAMP.CAL: "AAAAMMDDA15|text|".
+  2.16 (2026-11-20) Ratta aret: UltraSatans klocka + TOS ger fel ar (2028). STEAMP sparar senaste kanda
+       datum i STEAMP.DAT (AAAAMMDD, bredvid STEAMP.INF) vid varje start och nar man trycker OK i
+       Date/Time. Vid start tas dag, manad och tid fran klockan och aret fran STEAMP.DAT (ett ar till om
+       datumet har passerat nyar), och DATE$ satts om. Forsta gangen: stall ratt datum i Date/Time (OK).
+  2.15 (2026-11-20) Date/Time: anteckningar i kalendern. Klicka pa en dag, knappen Note = skriv en
+       rad (hogst 40 tecken, tom = ta bort). Dagar med anteckning har ett rott streck, den valda
+       dagens anteckning visas under kalendern. Hogst 50 anteckningar i STEAMP.CAL (bredvid
+       STEAMP.INF, "AAAAMMDD|text|..."), sparas direkt. Har dagens datum en anteckning visas den
+       i statusraden nar STEAMP startar. Obs: OK satter datumet till den valda dagen - stang med x
+       eller Cancel om du bara tittat i kalendern.
+  2.14 (2026-11-20) Skrivbordet: pekaren lamnade en kopia nar man drog en ikon (skarmen kopierades
+       innan pekaren hunnit forsvinna). Nu vantar den tva VBL efter HIDE ON.
+  2.13 (2026-11-20) Skrivbordet: ikoner for alla appar (nya: Paint och Date/Time). Ikonerna ligger i
+       ett rutnat 5 x 6 (64 x 30 punkter, IC/IR). Dra en ikon = en ram visar rutan, slapp = den
+       flyttas dit (upptagen ruta = ikonerna byter plats). Start -> Save settings sparar platserna
+       i STEAMP.INF (falt "I" + kolumn,rad x 8 efter klickljudet; gamla INF-filer gar att lasa).
+  2.12 (2026-11-20) Paint: klipp ut / kopiera / klistra in med CLIP.BIN fran FastPaint (lagd som DATA,
+       9031-9047, laggs i bank 8 nar Paint oppnas). Nytt verktyg langst till hoger (prickig ruta):
+       dra med vanster = kopiera, med hoger = klipp ut (rutan fylls med farg 2). Sedan foljer biten
+       musen: vanster klick = klistra in, hoger = klistra in med farg 2 genomskinlig. Esc = sluta
+       klistra, Ctrl+V = klistra igen (aven i en annan bild). Undo angrar varje inklistring.
+       Open / Save as borjar i mappen dar bilden senast laddades eller sparades (PG$).
+  2.11 (2026-11-20) Paint: rulla bilden. Bara 160 av 200 rader syns ovanfor fargerna; knappen med
+       pilen (mellan Full och x) hoppar mellan overdelen och nederdelen, pil upp/ner rullar 8 rader.
+       Man ritar som vanligt i den del som syns. Space = hela bilden som forut.
+  2.10 (2026-11-20) Paint: texten pa knapparna (Undo, New, Open, Save, As, Full, x) forsvann nar man
+       tryckte pa dem. Nu syns den hela tiden, aven nedtryckt.
+  2.09 (2026-11-20) Paint: muspekaren doljs aven med penna, pensel och sudd medan man ritar (den
+       lamnade kopior av sig och storde penseln).
+  2.08 (2026-11-20) Notepad: knappen ||| ger nu 8x8-text (STOS8.FNT) i stallet for PIXUF7 med
+       fast bredd 6 (det blev for glest).
+  2.07 (2026-11-20) Paint (Start-menyn): penna, pensel, linje, ram, fylld ruta, ellips, fylld
+       ellips, fyll, sudd, pipett, Undo, New/Open/Save/Save as (NEO, PI1, PE1), helbild.
+       Delad palett med CLVIDEO SPLIT RES sa att verktygen har STEAMP:s farger. Start-menyn
+       har 10 rader (13 punkter hoga). Kraver nu ocksa CLVIDEO (X).
+  2.06 (2026-11-20) Notepad: rullistorna kommer fram forst vid de tva sista punkterna
+       (x 318-319 och y 198-199). Medan musen ar over en rullist ligger den kvar.
+  2.05 (2026-11-20) Notepad: markera (dra med musen, Shift+klick, Shift+pilar), Cut/Copy/Paste/
+       Delete/Select all i en meny pa hoger musknapp och Ctrl+X/C/V/A. Urklipp i bank 3.
+       Sidbyte flyttat till Ctrl+upp/ner, radslut till Ctrl+Home.
+  2.04 (2026-11-20) Notepad: knappen ||| i titelraden vaxlar mellan proportionell text och fast
+       teckenbredd (6 punkter per tecken). Markoren, klick, sokmarkeringen och sidledsrullningen
+       raknar med samma bredd.
+  2.03 (2026-11-20) Klocka i aktivitetsfaltet och Date/Time-fonster (kalender, tid, OK satter
+       DATE$ och TIME$). Den minimerade spelaren flyttad 32 punkter at vanster (x 152-287).
+  2.02 (2026-11-20) File explorer (nytt namn, utan STEAMP i titeln) ar med i fonsterordningen och
+       kommer fram nar man klickar i den. Hogst 4 fonster. Aktivitetsfaltet visar alla oppna
+       fonster (nedtryckt = overst, klick = fram/minimera/visa). Notepad: sokrutan blinkade (ritades
+       om hela tiden) - nu bara nar man skriver; rullistorna syns bara vid kanterna; Line / Ctrl+G
+       = ga till rad. Raknarens tangenter fungerade inte nar den lag overst (efter 4 fonster).
+       Sok-/radrutan anvander FZ$ (Z$ skrevs over av Start-knappen).
+  2.01 (2026-11-19) Fonsterordning: klick lagger fonstret overst, Minesweeper som startas fran
+       ikonen hamnar overst (forut alltid bakom spelaren). Ikonen gar nu att dubbelklicka aven
+       nar spelaren ligger over den (bara den synliga delen ritas om, spelaren ritas inte om
+       vid varje klick). Notepad: Find / Ctrl+F / F3 och minimera. Calculator. Aktivitetsfaltet
+       visar alla minimerade fonster med lika breda knappar. Explorer-ikonen ar nu nr 2,
+       Calculator nr 5 (sex ikoner, 30 punkter emellan). Start-menyn med Calculator.
+       Provat i tolken: 12+3*4=60, 60/4=15, 1/3=0.333333, .1+.2=0.3, 2-5=-3, 10/0, klick och
+       tangenter, minimera/visa; Find "lazy" + F3 (rad 7, 8, markerat), minimera Notepad och
+       visa igen, fyra minimerade knappar; spelaren + Minesweeper: overst vaxlar vid klick;
+       Notepad Save as och Pictures (PE1, NEO) som i 2.00.
+  2.00 (2026-11-19) Skrivbord med ikoner (STE Amp, Explorer, Minesweeper, Notepad, Pictures).
+       Explorer ar ett fonster som kan stangas och minimeras (knapp i aktivitetsfaltet).
+       Notepad: enkel texteditor (TXT/ASC/DOC, 64000 byte / 1500 rader). Pictures: PE1 (aven
+       storre an skarmen, STE-hardvaruscroll), NEO, PI1, MBK i helskarm. Start-menyn med
+       Notepad och Pictures. Meddelanderaden flyttas at hoger nar Explorer/Mines ar minimerade.
+       STEAMP.INF far hela sokvagen aven om programmet startas fran aktuell mapp (filvaljaren
+       byter aktuell mapp).
+  1.09 (2026-11-19) Minesweeper kan minimeras (_): "Mines" i aktivitetsfaltet, klick = visa igen
+       med spelet kvar. Provat i tolken: forsta klick, minimera, vanta, visa (tiden 5 s).
+  1.08 (2026-11-19) Start-menyn: "Click sound: on/off" med hogtalarikon. "Start" och de roda
+       siffrorna i Minesweeper ritas en bokstav/siffra i taget med en punkt emellan.
+  1.07 (2026-11-19) Klickljud vid musklick (aven i dialoger och Start-menyn): SFX PLAY med
+       klicket inlagt i modulen, eller DAC RAW nar ingen musik spelar. K = av/pa. Save kopierar
+       fran disken. Provat i tolken: DAC fore musik, PUT SAMPLE i plats 31 (ILLUSION), SFX under
+       spel och paus, DAC efter stopp, K av; Save-kopian identisk med originalet.
+  1.06 (2026-11-19) Minesweeper (Start-menyn): 9 x 9, 10 minor, flaggor, klocka, ansiktsknapp,
+       flyttbart fonster. Klockan gar pa TIMER (riktiga sekunder).
+       Provat i tolken: oppna fran Start, forsta klicket, flagga, vinst (alla sakra rutor ->
+       "You won", alla minor flaggas), small (minorna visas, rod mina), tillsammans med spelaren.
+  1.05 (2026-11-19) Aktivitetsfalt med Start-knapp och Start-meny (STE Amp, Browser, Save
+       settings, Shut down) med sma ikoner. Spelaren kan dras anda upp till Y=0.
+       Provat i tolken: menyn, markering under musen, alla fyra valen, Esc, dra spelaren till Y=0.
+  1.04 (2026-11-19) Minimerad spelare = litet Win95-fonster nere till hoger (STEAMP, lage,
+       position, aterstall, x) i stallet for raden i titelraden. Provat i tolken: minimera,
+       positionen raknas, aterstall, F3 av/pa, x stanger.
+  1.03 (2026-11-19) STEAMP.INF sparar ocksa senaste laten (mapp, namn, position). Vid start:
+       markoren pa laten och "Last song: ... press Play (X)"; Play fortsatter pa positionen.
+       Provat i tolken: ILLUSION spelad till position 20, avsluta, starta, X -> SONG JUMP 19.
+  1.02 (2026-11-19) Minimera-knapp (_) i spelarens titelrad: liten spelarrad i programmets
+       titelrad, klick dar = visa. Loop-knapp (och L): laten upprepas. Spelaren 24 punkter
+       bredare (256) for Loop-knappen; volym-, bas- och diskantreglagen langre.
+       Provat i tolken: minimera, positionen raknas i titelraden, visa igen, Loop pa = ingen
+       nasta lat over flera varv, Loop av = nasta lat.
+  1.01 (2026-11-19) Ikonerna pa knapparna (|< > || [] >|) en punkt hogre. Klick pa VU-staplarna
+       eller 1-4 slar av/pa kanalerna (SONG CHANNELS), avstangd = gra stapel. Provat i tolken:
+       klick pa stapel 2, tangent 4, klick igen -> maskerna 13, 5, 7.
+  1.00 (2026-11-19) forsta versionen. Bygger pa FEXPLORE V.1.04 (alla filfunktioner), gjord for
+       lag upplosning med Win95-utseende, plus spelaren. Rattat jamfort med FEXPLORE: nar en mapp
+       togs bort forsokte rad 5427 ta bort mappens sista fil en gang till (Q skrevs over i 5450),
+       sa meddelandet blev "Some could not be deleted" fast allt var borta.
